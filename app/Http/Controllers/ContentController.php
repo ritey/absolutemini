@@ -29,12 +29,7 @@ class ContentController extends Controller {
 
 	public function adminIndex()
 	{
-		$filters = [
-			['name' => 'content_group', 'value' => 'article']
-		];
-		$content = $this->content->filterAll($filters);
-		$content = $this->content->order($content,'created_at','DESC');
-		$content = $content->get();
+		$content = $this->content->all();
 		return view('admin.content_index',compact('content'));
 	}
 
@@ -92,7 +87,6 @@ class ContentController extends Controller {
 		'enabled',
 		'user_id',
 		'slug',
-		'content_group',
 		'thumbnail',
 		'name',
 		'page_title',

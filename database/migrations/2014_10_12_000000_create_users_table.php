@@ -36,7 +36,6 @@ class CreateUsersTable extends Migration
             $table->index('enabled');
             $table->index('slug');
             $table->index('category_id');
-            $table->index('content_group');
         });
 
         Schema::create('categories', function (Blueprint $table) {

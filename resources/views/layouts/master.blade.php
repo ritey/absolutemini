@@ -45,10 +45,10 @@
 
         <footer class="footer">
             <p>
-                <a href="{{ route('about') }}" title="about doblotto and creator David Wright">About</a>
-                <a href="{{ route('terms') }}" title="doblotto terms of using the site">Terms</a>
-                <a href="{{ route('privacy') }}" title="doblotto privacy policy">Privacy</a>
-                <a href="{{ route('advertise') }}" title="Advertise on doblotto">Advertise with us</a>
+                <a href="{{ route('about') }}" title="About Absolutemini">About</a>
+                <a href="{{ route('terms') }}" title="Absolutemini terms of using the site">Terms</a>
+                <a href="{{ route('privacy') }}" title="Absolutemini privacy policy">Privacy</a>
+                <a href="{{ route('advertise') }}" title="Advertise on ">Advertise with us</a>
             </p>
         </footer>
     </div>
@@ -58,11 +58,11 @@
         window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":"http://absolutemini.com/privacy","theme":"light-bottom"};
     </script>
 
-    <script type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
+    <script async type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script>
     <!-- End Cookie Consent plugin -->
 
     <script src="{{ elixir("js/app.js") }}" type="text/javascript"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script async src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 
     @yield('footer')
 

@@ -30,6 +30,7 @@ Route::get('/codey/content', ['as' => 'admin.content.index', 'uses' => 'ContentC
 Route::get('/codey/content/new', ['as' => 'admin.content.new', 'uses' => 'ContentController@create']);
 Route::get('/codey/content/{id}/edit', ['as' => 'admin.content.show', 'uses' => 'ContentController@edit']);
 Route::put('/codey/content/{id}/edit', ['as' => 'admin.content.update', 'uses' => 'ContentController@update']);
+Route::post('/codey/content', ['as' => 'admin.content.create', 'uses' => 'ContentController@store']);
 
 Route::get('/{category_slug}/{article_slug}', ['as' => 'article', 'uses' => 'ArticleController@article']);
 
