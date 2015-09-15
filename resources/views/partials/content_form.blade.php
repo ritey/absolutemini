@@ -48,11 +48,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('thumbnail', 'Image path' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	{!! Form::label('category_id', 'Category' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
 
 	<div class="col-md-9">
 
-		{!! Form::text('thumbnail', $content->thumbnail, [ 'class' => 'form-control' ]) !!}
+		{!! Form::select('category_id', $categories, $content->category_id, [ 'class' => 'form-control' ]) !!}
 
 	</div>
 
@@ -76,7 +76,7 @@
 
 	<div class="col-md-9">
 
-		{!! Form::textarea('content', $content->content, [ 'class' => 'form-control' ]) !!}
+		{!! Form::textarea('content', stripslashes($content->content), [ 'class' => 'form-control' ]) !!}
 
 	</div>
 

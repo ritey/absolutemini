@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use CoderStudios\Repositories\ContentRepositoryInterface;
+use CoderStudios\Repositories\CategoryRepositoryInterface;
 use CoderStudios\Requests\ContentRequest;
 use App;
 use Cache;
 
-class ContentController extends Controller {
+class ArticleController extends Controller {
 
-	public function __construct(ContentRepositoryInterface $content)
+	public function __construct(ContentRepositoryInterface $content, CategoryRepositoryInterface $category)
 	{
 		$this->content = $content;
+		$this->category = $category;
 	}
 
 	public function index()
@@ -27,14 +29,21 @@ class ContentController extends Controller {
 		return view('pages.content_index',compact('content'));
 	}
 
+	public function category($category_id)
+	{
+		$category = $this->category->where('slug',$category_id)->first();
+		$articles = $this->content->where('category_id',$category->id)->get();
+		return view('pages.category',compact('articles','category'));
+	}
+
 	public function article($category_slug,$slug)
 	{
+		$category_id = $this->category->where('slug',$category_slug)->pluck('id');
 		$filters = [
 			['name' => 'enabled', 'value' => 1],
-			['name' => 'category_slug', 'value' => $category_slug],
+			['name' => 'category_id', 'value' => $category_id],
 			['name' => 'slug', 'value' => $slug],
 		];
-		dd($filters);
 		if (Cache::has($slug)) {
 			$content = Cache::get($slug);
 		} else {

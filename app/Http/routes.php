@@ -32,5 +32,11 @@ Route::get('/codey/content/{id}/edit', ['as' => 'admin.content.show', 'uses' => 
 Route::put('/codey/content/{id}/edit', ['as' => 'admin.content.update', 'uses' => 'ContentController@update']);
 Route::post('/codey/content', ['as' => 'admin.content.create', 'uses' => 'ContentController@store']);
 
-Route::get('/{category_slug}/{article_slug}', ['as' => 'article', 'uses' => 'ArticleController@article']);
+Route::get('/codey/category', ['as' => 'admin.category.index', 'uses' => 'CategoryController@index']);
+Route::get('/codey/category/new', ['as' => 'admin.category.new', 'uses' => 'CategoryController@create']);
+Route::get('/codey/category/{id}/edit', ['as' => 'admin.category.edit', 'uses' => 'CategoryController@edit']);
+Route::put('/codey/category/{id}/edit', ['as' => 'admin.category.update', 'uses' => 'CategoryController@update']);
+Route::post('/codey/category', ['as' => 'admin.category.create', 'uses' => 'CategoryController@store']);
 
+Route::get('/{category_slug}', ['as' => 'category', 'uses' => 'ArticleController@category']);
+Route::get('/{category_slug}/{article_slug}', ['as' => 'article', 'uses' => 'ArticleController@article']);

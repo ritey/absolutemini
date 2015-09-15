@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use CoderStudios\Repositories\ContentRepositoryInterface;
+use CoderStudios\Repositories\CategoryRepositoryInterface;
 
 class HomeController extends Controller {
 
@@ -17,6 +19,12 @@ class HomeController extends Controller {
 	|
 	*/
 
+	public function __construct(ContentRepositoryInterface $content, CategoryRepositoryInterface $category)
+	{
+		$this->content = $content;
+		$this->category = $category;
+	}
+
 	/**
 	 * Show the homepage.
 	 *
@@ -24,6 +32,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.home');
+		$categories = $this->category->where('enabled','1')->get();
+
+		return view('pages.home',compact('categories'));
 	}
 }

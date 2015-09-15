@@ -10,6 +10,7 @@ class RepositoryServiceProvider extends ServiceProvider
 	{
 		$repositories = [
 			'ContentRepository',
+			'CategoryRepository',
 		];
 
 		foreach($repositories as $repository) {

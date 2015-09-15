@@ -23,30 +23,19 @@ Classic mini enthusiast and resource site
 
 		<div class="col-sm-12">
 
-			<ul class="list-unstyled">
+			@foreach($categories as $category)
 
-				<li>
-					<a href="#">General</a>
+				<div class="col-sm-4">
 
-				</li>
+					<div class="panel panel-default">
+  						<div class="panel-body">
+  							<a href="{{ $category->slug }}" title="{{ $category->name }}">{{ $category->name }}</a>
+  						</div>
+  					</div>
 
-				<li>
-					<a href="#">Body</a>
-				</li>
+				</div>
 
-				<li>
-					<a href="#">Engine</a>
-				</li>
-
-				<li>
-					<a href="#">Suspension</a>
-				</li>
-
-				<li>
-					<a href="#">Motorsport</a>
-				</li>
-
-			</ul>
+			@endforeach
 
 		</div>
 

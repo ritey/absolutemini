@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use CoderStudios\Repositories\ContentRepositoryInterface;
+use CoderStudios\Repositories\CategoryRepositoryInterface;
 use CoderStudios\Requests\ContentRequest;
 use App;
 use Cache;
 
 class ContentController extends Controller {
 
-	public function __construct(ContentRepositoryInterface $content)
+	public function __construct(ContentRepositoryInterface $content, CategoryRepositoryInterface $category)
 	{
 		$this->content = $content;
+		$this->category = $category;
 	}
 
 	public function index()
@@ -74,21 +76,21 @@ class ContentController extends Controller {
 	public function edit($id)
 	{
 		$content = $this->content->find($id);
+		$categories = $this->category->where('enabled','1')->lists('name','id');
 
 		if (!$content->count()) {
 			App::Abort(404);
 		}
-		return view('admin.content_edit',compact('content'));
+		return view('admin.content_edit',compact('content','categories'));
 	}
 
 	public function update(ContentRequest $request, $id)
 	{
 		$this->content->updateWithIdAndInput($id,$request->only(
 		'enabled',
-		'user_id',
 		'slug',
-		'thumbnail',
 		'name',
+		'category_id',
 		'page_title',
 		'meta_description',
 		'summary',
@@ -99,7 +101,8 @@ class ContentController extends Controller {
 	public function create()
 	{
 		$content = $this->content->getNew();
-		return view('admin.content_new',compact('content'));
+		$categories = $this->category->all()->list('name','id');
+		return view('admin.content_new',compact('content','categories'));
 	}
 
 	public function store(ContentRequest $request)
