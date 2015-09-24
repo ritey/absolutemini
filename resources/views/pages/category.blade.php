@@ -15,7 +15,7 @@ Classic mini enthusiast and resource site
 @section('content')
 
 	<div class="page-header">
-		<h1 class="page-title">Classic mini enthusiast and resource site</h1>
+		<h1 class="page-title">{{ $category->name }}</h1>
 		<p class="lead page-description">{{ $category->summary }}</p>
 	</div>
 
@@ -28,7 +28,7 @@ Classic mini enthusiast and resource site
 				@foreach($articles as $article)
 
 					<li>
-						<a href="{{$category->slug}}/{{ $article->slug }}" title="{{ $article->name }}">{{ $article->name }}</a>
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="{{$category->slug}}/{{ $article->slug }}" title="{{ $article->name }}">{{ $article->name }}</a>
 					</li>
 
 				@endforeach
