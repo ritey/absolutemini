@@ -1,4 +1,4 @@
-Advertisment
+<div class="ad"><span>Advertisment</span>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Absolutemini -->
 <ins class="adsbygoogle"
@@ -9,3 +9,4 @@ Advertisment
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+</div>

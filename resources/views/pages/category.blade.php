@@ -21,7 +21,7 @@ Classic mini enthusiast and resource site
 
 	<div class="row">
 
-		<div class="col-sm-12">
+		<div class="col-sm-12 col-md-8 col-lg-8">
 
 			<ul class="list-unstyled">
 
@@ -34,6 +34,12 @@ Classic mini enthusiast and resource site
 				@endforeach
 
 			</ul>
+
+		</div>
+
+		<div class="col-sm-12 col-md-4 col-lg-4">
+
+			@include('partials.ad')
 
 		</div>
 
