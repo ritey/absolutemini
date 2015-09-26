@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('page_title')
-Classic mini enthusiast and resource site
+{{ $category->name }}
 @endsection
 
 @section('meta_description')
-Classic mini enthusiast and resource site
+{{ $category->summary }}
 @endsection
 
 @section('head')

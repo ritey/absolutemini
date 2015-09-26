@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('page_title')
-$content->page_title
+{{ $content->page_title }}
 @endsection
 
 @section('meta_description')
-$content->meta_description
+{{ $content->meta_description }}
 @endsection
 
 @section('head')
