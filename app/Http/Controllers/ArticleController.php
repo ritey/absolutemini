@@ -32,7 +32,7 @@ class ArticleController extends Controller {
 	public function category($category_id)
 	{
 		$category = $this->category->where('slug',$category_id)->first();
-		$articles = $this->content->where('category_id',$category->id)->get();
+		$articles = $this->content->where('category_id',$category->id)->where('enabled','1')->get();
 		return view('pages.category',compact('articles','category'));
 	}
 
