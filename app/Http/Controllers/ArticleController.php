@@ -38,7 +38,8 @@ class ArticleController extends Controller {
 
 	public function article($category_slug,$slug)
 	{
-		$category_id = $this->category->where('slug',$category_slug)->pluck('id');
+		$category = $this->category->where('slug',$category_slug)->first();
+		$category_id = $category->id;
 		$filters = [
 			['name' => 'enabled', 'value' => 1],
 			['name' => 'category_id', 'value' => $category_id],
@@ -55,6 +56,7 @@ class ArticleController extends Controller {
 			}
 			Cache::put($slug,$content,60);
 		}
+		$content->category = $category;
 
 		return view('pages.content_show',compact('content'));
 	}

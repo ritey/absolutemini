@@ -23,6 +23,8 @@ Classic mini enthusiast and resource site
 
 		<div class="col-sm-12 col-md-8 col-lg-8">
 
+			@include('partials.breadcrumb', [ 'name' => 'category', 'breadcrumb' => $category ])
+
 			<ul class="list-unstyled">
 
 				@foreach($articles as $article)

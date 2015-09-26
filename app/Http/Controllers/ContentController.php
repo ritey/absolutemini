@@ -95,6 +95,7 @@ class ContentController extends Controller {
 		'meta_description',
 		'summary',
 		'content'));
+		Cache::flush();
 		return redirect()->route('admin.content.index');
 	}
 
@@ -108,6 +109,7 @@ class ContentController extends Controller {
 	public function store(ContentRequest $request)
 	{
 		$this->content->create($request->all());
+		Cache::flush();
 		return redirect()->route('admin.content.index');
 	}
 }

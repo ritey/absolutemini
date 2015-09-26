@@ -21,6 +21,8 @@ Classic mini enthusiast and resource site
 
 	<div class="row">
 
+			@include('partials.breadcrumb', [ 'name' => 'article', 'breadcrumb' => $content ])
+
 		<div class="col-sm-12 col-md-8 col-lg-8">
 
 			{!! stripslashes($content->content) !!}
