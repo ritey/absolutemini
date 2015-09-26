@@ -48,7 +48,7 @@
                 <a href="{{ route('about') }}" title="About Absolutemini">About</a>
                 <a href="{{ route('terms') }}" title="Absolutemini terms of using the site">Terms</a>
                 <a href="{{ route('privacy') }}" title="Absolutemini privacy policy">Privacy</a>
-                <a href="{{ route('advertise') }}" title="Advertise on ">Advertise with us</a>
+                <a href="{{ route('advertise') }}" title="Advertise on Absolutemini">Advertise with us</a>
             </p>
         </footer>
     </div>
