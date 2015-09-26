@@ -11,7 +11,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/" title="View the Date of Birth Lottery homepage"><img src="images/absolutemini-32.png" alt="absolutemini logo" /></a>
+		      <a class="navbar-brand" href="/" title="View the Absolutemini homepage"><img src="images/absolutemini-32.png" alt="absolutemini logo" /></a>
 		    </div>
 
 			<div id="navbar" class="navbar-collapse collapse">
