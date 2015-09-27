@@ -23,7 +23,7 @@
 
 		<div class="col-sm-12">
 
-			@include('partials.breadcrumb', [ 'name' => 'article', 'breadcrumb' => $content ])
+			@include('partials.breadcrumb', [ 'name' => 'category', 'breadcrumb' => $category ])
 
 		</div>
 
