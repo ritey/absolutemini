@@ -21,9 +21,19 @@
 
 	<div class="row">
 
+		<div class="col-sm-12">
+
 			@include('partials.breadcrumb', [ 'name' => 'article', 'breadcrumb' => $content ])
 
+		</div>
+
+	</div>
+
+	<div class="row">
+
 		<div class="col-sm-12 col-md-8 col-lg-8">
+
+			@include('partials.ad')
 
 			{!! stripslashes($content->content) !!}
 
