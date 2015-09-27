@@ -35,7 +35,13 @@
 
 			@include('partials.ad')
 
-			{!! stripslashes($content->content) !!}
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+				{!! stripslashes($content->content) !!}
+
+				</div>
+			</div>
 
 		</div>
 

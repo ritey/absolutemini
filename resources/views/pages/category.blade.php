@@ -33,17 +33,23 @@
 
 		<div class="col-sm-12 col-md-8 col-lg-8">
 
-			<ul class="list-unstyled">
+			<div class="panel panel-default">
+				<div class="panel-body">
 
-				@foreach($articles as $article)
+					<ul class="list-unstyled">
 
-					<li>
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="{{$category->slug}}/{{ $article->slug }}" title="{{ $article->name }}">{{ $article->name }}</a>
-					</li>
+						@foreach($articles as $article)
 
-				@endforeach
+							<li>
+								<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="{{$category->slug}}/{{ $article->slug }}" title="{{ $article->name }}">{{ $article->name }}</a>
+							</li>
 
-			</ul>
+						@endforeach
+
+					</ul>
+
+				</div>
+			</div>
 
 		</div>
 

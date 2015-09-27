@@ -8012,6 +8012,7 @@ button.close {
 body {
   margin-top:40px;
   color:rgb(46,46,46);
+  background:url('/images/absolutemini-bg.png') no-repeat top right;
 }
 
 .navbar-brand img {
