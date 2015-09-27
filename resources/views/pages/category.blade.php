@@ -48,6 +48,8 @@
 
 					</ul>
 
+					{!! $articles->render() !!}
+
 				</div>
 			</div>
 
