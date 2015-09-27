@@ -5,7 +5,7 @@
 @endsection
 
 @section('meta_description')
-{{ $category->summary }}
+{{ $category->meta_description }}
 @endsection
 
 @section('head')
