@@ -49,6 +49,8 @@ Articles on absolutemini.com
 				</div>
 			</div>
 		@endforeach
+
+		{!! $content->render() !!}
 	@endif
 
 @endsection

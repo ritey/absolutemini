@@ -148,6 +148,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
 
     ],
 

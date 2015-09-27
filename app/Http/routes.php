@@ -20,6 +20,7 @@ Route::get('/terms', ['as' => 'terms', 'uses' => 'PageController@terms']);
 Route::get('/about', ['as' => 'about', 'uses' => 'PageController@about']);
 Route::get('/privacy', ['as' => 'privacy', 'uses' => 'PageController@privacy']);
 Route::get('/advertise', ['as' => 'advertise', 'uses' => 'PageController@advertise']);
+Route::get('/sitemap.xml', ['as' => 'sitemap', 'uses' => 'SitemapController@index']);
 
 Route::get('/codey', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
 Route::get('/codey/image', ['as' => 'admin.images.index', 'uses' => 'ImageController@index']);

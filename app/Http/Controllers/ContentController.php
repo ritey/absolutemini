@@ -31,7 +31,7 @@ class ContentController extends Controller {
 
 	public function adminIndex()
 	{
-		$content = $this->content->all();
+		$content = $this->content->paginate(10);
 		return view('admin.content_index',compact('content'));
 	}
 
@@ -109,7 +109,6 @@ class ContentController extends Controller {
 	public function store(ContentRequest $request)
 	{
 		$this->content->create($request->all());
-		Cache::flush();
 		return redirect()->route('admin.content.index');
 	}
 }
