@@ -16,7 +16,7 @@
 
 	<div class="page-header">
 		<h1 class="page-title">{{ $category->name }}</h1>
-		<p class="lead page-description">{{ $category->summary }}</p>
+		<p class="lead page-description">{{ $category->meta_description }}</p>
 	</div>
 
 	<div class="row">
