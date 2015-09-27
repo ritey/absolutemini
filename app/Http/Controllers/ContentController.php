@@ -102,7 +102,7 @@ class ContentController extends Controller {
 	public function create()
 	{
 		$content = $this->content->getNew();
-		$categories = $this->category->all()->list('name','id');
+		$categories = $this->category->all()->pluck('name','id');
 		return view('admin.content_new',compact('content','categories'));
 	}
 
