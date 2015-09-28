@@ -8,10 +8,11 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
+use Log;
 
 class ImageController extends Controller {
 
-	protected $image_directory = '/images/content/';
+	protected $image_directory = '/images/gallery/famous_minis';
 
 	public function __construct(Request $request)
 	{
@@ -20,8 +21,12 @@ class ImageController extends Controller {
 
 	public function index()
 	{
-		$images = Storage::files($this->image_directory);
+		$images = Storage::allFiles($this->image_directory);
 		$images = collect($images);
+		foreach($images as $image) {
+			echo '<a title="" data-gallery="" href="image.png?path=/'.$image.'&x=450&y=-1"><img alt="" src="image.png?path=/'.$image.'&x=200&y=-1" /> </a><br>';
+		}
+		exit();
 		return view('admin.image_index',compact('images'));
 	}
 
@@ -54,10 +59,14 @@ class ImageController extends Controller {
 	public function render()
 	{
 		$filename = '';
+		$path = '';
 		$width = 0;
 		$height = 0;
-		if ($this->request->input('name')) {
-			$filename = $this->request->input('name');
+		if ($this->request->input('path')) {
+			$filename = basename($this->request->input('path'));
+		}
+		if ($this->request->input('path')) {
+			$path = '/'.$this->request->input('path');
 		}
 		if ($this->request->input('x')) {
 			$width = $this->request->input('x');
@@ -65,12 +74,12 @@ class ImageController extends Controller {
 		if ($this->request->input('y')) {
 			$height = $this->request->input('y');
 		}
-		$image = '/images/content/' . $filename;
-		$image_2 = '/images/content/cache/' . $width . 'x' . $height . '_' . $filename;
+		$image = $path;
+		$image_2 = '/images/cache/' . $width . 'x' . $height . '_' . $filename;
 		$new_image = Storage::get($image);
 
-		if(!Storage::directories(storage_path('app') . '/images/content/cache')) {
-			Storage::makeDirectory('/images/content/cache');
+		if(!Storage::directories(storage_path('app') . '/images/cache')) {
+			Storage::makeDirectory('/images/cache');
 		}
 
 		if ($width > 0) {
