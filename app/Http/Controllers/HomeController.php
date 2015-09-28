@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use CoderStudios\Repositories\ContentRepositoryInterface;
 use CoderStudios\Repositories\CategoryRepositoryInterface;
+use Request;
 
 class HomeController extends Controller {
 
@@ -32,6 +33,21 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+
+		$category = Request::input('bmw_mini');
+		if(!empty($category)) {
+			switch($category) {
+				case 4: $category = 'mini-engine'; break;
+				case 2: $category = 'mini-general'; break;
+				case 6: $category = 'mini-body'; break;
+				case 7: $category = 'mini-suspension'; break;
+				case 8: $category = 'mini-general'; break;
+				case 9: $category = 'mini-general'; break;
+				case 10: $category = 'mini-general'; break;
+			}
+			return redirect()->route('category',$category);
+		}
+
 		$categories = $this->category->where('enabled','1')->get();
 
 		return view('pages.home',compact('categories'));

@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
