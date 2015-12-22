@@ -9,7 +9,7 @@
     RewriteRule ^(.*)$ http://absolutemini\.com/$1 [L]
 
     RewriteCond %{HTTP_HOST} ^gallery\.absolutemini\.com
-    RewriteRule ^(.*)$ http://absolutemini\.com/$1 [L]
+    RewriteRule ^(.*)$ http://absolutemini\.com/gallery/$1 [L]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d

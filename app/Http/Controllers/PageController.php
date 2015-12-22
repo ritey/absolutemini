@@ -64,4 +64,14 @@ class PageController extends Controller {
 		return view('pages.terms');
 	}
 
+	/**
+	 * Show the sitemap page.
+	 *
+	 * @return Response
+	 */
+	public function sitemap()
+	{
+		return view('pages.sitemap');
+
+	}
 }
