@@ -52,4 +52,10 @@ class HomeController extends Controller {
 
 		return view('pages.home',compact('categories'));
 	}
+
+	public function error404()
+	{
+		$categories = $this->category->where('enabled','1')->get();
+		return view('errors.404',compact('categories'));
+	}
 }

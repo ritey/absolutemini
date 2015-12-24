@@ -32,8 +32,11 @@ class ArticleController extends Controller {
 	public function category($category_id)
 	{
 		$category = $this->category->where('slug',$category_id)->first();
-		$articles = $this->content->where('category_id',$category->id)->where('enabled','1')->paginate(15);
-		return view('pages.category',compact('articles','category'));
+		if (is_object($category)) {
+			$articles = $this->content->where('category_id',$category->id)->where('enabled','1')->paginate(15);
+			return view('pages.category',compact('articles','category'));
+		}
+		return redirect()->route('404');
 	}
 
 	public function article($category_slug,$slug)
@@ -52,7 +55,7 @@ class ArticleController extends Controller {
 			if ($content->count()) {
 				$content = $content->first();
 			} else {
-				App::Abort(404);
+				return redirect()->route('404');
 			}
 			Cache::put($slug,$content,60);
 		}

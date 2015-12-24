@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/error/404', ['as' => '404', 'uses' => 'HomeController@error404']);
 
 Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
 
