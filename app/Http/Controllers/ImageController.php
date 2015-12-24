@@ -24,7 +24,7 @@ class ImageController extends Controller {
 		$images = Storage::allFiles($this->image_directory);
 		$images = collect($images);
 		foreach($images as $image) {
-			echo '<a title="" data-gallery="" href="image.png?path=/'.$image.'&x=450&y=-1"><img alt="" src="image.png?path=/'.$image.'&x=200&y=-1" /> </a><br>';
+			echo '<a title="" data-gallery="" href="/image.png?path=/'.$image.'&x=450&y=-1"><img alt="" src="/image.png?path=/'.$image.'&x=200&y=-1" /> </a><br>';
 		}
 		exit();
 		return view('admin.image_index',compact('images'));
