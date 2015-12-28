@@ -20,7 +20,7 @@ var paths = {
 elixir(function(mix) {
 
 
-	mix.sass('*', 'public/css/', {
+	mix.sass('app.scss', 'public/css/', {
 		includePaths: [
 			paths.bootstrap + 'stylesheets',
 			paths.fontawesome + 'scss'
@@ -29,7 +29,7 @@ elixir(function(mix) {
 		.copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
 		.copy(paths.fontawesome + 'fonts/**', 'public/fonts/fontawesome')
 		.styles([
-			'public/css/*',
+			'public/css/app.css',
 			'./resources/assets/css/style.css',
 
 		], 'public/css/app.css', './')

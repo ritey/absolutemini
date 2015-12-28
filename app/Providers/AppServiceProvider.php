@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->setComposerHelpers();
     }
 
     /**
@@ -25,4 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    private function setComposerHelpers()
+    {
+        view()->composer('errors.404','CoderStudios\Composers\Error404Composer');
+    }
+
 }
