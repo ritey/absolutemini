@@ -31,7 +31,7 @@ Articles on absolutemini.com
 
 	@if($content)
 		@foreach($content as $row)
-			<div class="media">
+			<div class="media admin-block">
 				@if ($row->thumbnail)
 				<div class="media-left">
 					<a href="{{ route('admin.content.show', $row->id) }}" title="{{ $row->name }}">
@@ -45,7 +45,7 @@ Articles on absolutemini.com
 					@if ($row->summary)
 					<p>{{ $row->summary }}</p>
 					@endif
-					<p class="text-right"><a class="btn btn-default" href="{{ route('admin.content.show',$row->id) }}" title="{{ $row->name }}">edit</a></p>
+					<p><a class="btn btn-default" href="{{ route('admin.content.show',$row->id) }}" title="{{ $row->name }}">edit</a></p>
 				</div>
 			</div>
 		@endforeach

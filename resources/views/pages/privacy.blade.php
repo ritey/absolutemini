@@ -5,7 +5,7 @@ Absolutemini.com Privacy Policy
 @endsection
 
 @section('meta_description')
-Absolutemini.com Privacy Policy
+Absolutemini.com respects your privacy. Our privacy policy outlines how we use cookies to collect non-personal information to help improve your experience on the site.
 @endsection
 
 @section('head')

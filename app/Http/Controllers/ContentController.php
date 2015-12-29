@@ -31,7 +31,7 @@ class ContentController extends Controller {
 
 	public function adminIndex()
 	{
-		$content = $this->content->paginate(10);
+		$content = $this->content->orderBy('updated_at','DESC')->paginate(10);
 		return view('admin.content_index',compact('content'));
 	}
 
