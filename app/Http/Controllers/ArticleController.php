@@ -42,12 +42,14 @@ class ArticleController extends Controller {
 	public function article($category_slug,$slug)
 	{
 		$category = $this->category->where('slug',$category_slug)->first();
-		$category_id = $category->id;
 		$filters = [
 			['name' => 'enabled', 'value' => 1],
-			['name' => 'category_id', 'value' => $category_id],
 			['name' => 'slug', 'value' => $slug],
 		];
+		if (is_object($category)) {
+			$category_id = $category->id;
+			$filters['name' => 'category_id', 'value' => $category_id];
+		}
 		if (Cache::has($slug)) {
 			$content = Cache::get($slug);
 		} else {

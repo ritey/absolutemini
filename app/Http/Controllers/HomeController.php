@@ -55,7 +55,6 @@ class HomeController extends Controller {
 
 	public function error404()
 	{
-		$categories = $this->category->where('enabled','1')->get();
-		return view('errors.404',compact('categories'));
+		return view('errors.404');
 	}
 }
