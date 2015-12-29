@@ -48,7 +48,7 @@ class ArticleController extends Controller {
 		];
 		if (is_object($category)) {
 			$category_id = $category->id;
-			$filters['name' => 'category_id', 'value' => $category_id];
+			$filters[] = ['name' => 'category_id', 'value' => $category_id];
 		}
 		if (Cache::has($slug)) {
 			$content = Cache::get($slug);
