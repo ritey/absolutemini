@@ -56,8 +56,8 @@ class SitemapController extends Controller {
 				$category_slug = '';
 				if (isset($category->slug)) {
 					$category_slug = $category->slug;
+					$sitemap->add(URL::to('/') . '/' . $category_slug . '/' . $article->slug, $article->updated_at->toRfc2822String(), '0.9', 'monthly');
 				}
-				$sitemap->add(URL::to('/') . '/' . $category_slug . '/' . $article->slug, $article->updated_at->toRfc2822String(), '0.9', 'monthly');
 			}
 
 		}
