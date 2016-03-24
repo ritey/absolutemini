@@ -7,14 +7,15 @@ use CoderStudios\Repositories\ContentRepositoryInterface;
 use CoderStudios\Repositories\CategoryRepositoryInterface;
 use CoderStudios\Requests\ContentRequest;
 use App;
-use Cache;
+use Illuminate\Contracts\Cache\Repository as Cache;
 
 class ContentController extends Controller {
 
-	public function __construct(ContentRepositoryInterface $content, CategoryRepositoryInterface $category)
+	public function __construct(Cache $cache, ContentRepositoryInterface $content, CategoryRepositoryInterface $category)
 	{
 		$this->content = $content;
 		$this->category = $category;
+		$this->cache = $cache;
 	}
 
 	public function index()
@@ -58,8 +59,8 @@ class ContentController extends Controller {
 			['name' => 'enabled', 'value' => 1],
 			['name' => 'slug', 'value' => $slug],
 		];
-		if (Cache::has($slug)) {
-			$content = Cache::get($slug);
+		if ($this->cache->has($slug)) {
+			$content = $this->cache->get($slug);
 		} else {
 			$content = $this->content->filterAll($filters);
 			if ($content->count()) {
@@ -67,7 +68,7 @@ class ContentController extends Controller {
 			} else {
 				App::Abort(404);
 			}
-			Cache::put($slug,$content,60);
+			$this->cache->put($slug,$content,60);
 		}
 
 		return view('pages.content_show',compact('content'));
@@ -95,7 +96,7 @@ class ContentController extends Controller {
 		'meta_description',
 		'summary',
 		'content'));
-		Cache::flush();
+		$this->cache->flush();
 		return redirect()->route('admin.content.index');
 	}
 
@@ -103,12 +104,15 @@ class ContentController extends Controller {
 	{
 		$content = $this->content->getNew();
 		$categories = $this->category->all()->pluck('name','id');
+		$this->cache->flush();
+
 		return view('admin.content_new',compact('content','categories'));
 	}
 
 	public function store(ContentRequest $request)
 	{
 		$this->content->create($request->all());
+		$this->cache->flush();
 		return redirect()->route('admin.content.index');
 	}
 }

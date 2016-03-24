@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use CoderStudios\Repositories\CategoryRepositoryInterface;
 use CoderStudios\Requests\CategoryRequest;
 use App;
-use Cache;
+use Illuminate\Contracts\Cache\Repository as Cache;
 
 class CategoryController extends Controller {
 
-	public function __construct(CategoryRepositoryInterface $category)
+	public function __construct(Cache $cache, CategoryRepositoryInterface $category)
 	{
 		$this->category = $category;
+		$this->cache = $cache;
 	}
 
 	public function index()
@@ -39,6 +40,7 @@ class CategoryController extends Controller {
 		'name',
 		'page_title',
 		'meta_description'));
+		$this->cache->flush();
 		return redirect()->route('admin.category.index');
 	}
 
@@ -51,6 +53,7 @@ class CategoryController extends Controller {
 	public function store(CategoryRequest $request)
 	{
 		$this->category->create($request->all());
+		$this->cache->flush();
 		return redirect()->route('admin.category.index');
 	}
 }

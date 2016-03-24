@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Cache;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Contracts\Cache\Repository as Cache;
 
 class PageController extends Controller {
 
@@ -19,9 +19,9 @@ class PageController extends Controller {
 
 	protected $client;
 
-	public function __construct()
+	public function __construct(Cache $cache)
 	{
-
+		$this->cache = $cache;
 	}
 
 	/**
@@ -31,7 +31,15 @@ class PageController extends Controller {
 	 */
 	public function about()
 	{
-		return view('pages.about');
+        $key = snake_case(class_basename($this) . '_' . __function__);
+
+        if ($this->cache->has($key)) {
+            $view = $this->cache->get($key);
+        } else {
+			$view = view('pages.about')->render();
+        	$this->cache->add($key, $view, env('APP_CACHE_MINUTES'));
+		}
+		return $view;
 	}
 
 	/**
@@ -41,7 +49,15 @@ class PageController extends Controller {
 	 */
 	public function advertise()
 	{
-		return view('pages.advertise');
+        $key = snake_case(class_basename($this) . '_' . __function__);
+
+        if ($this->cache->has($key)) {
+            $view = $this->cache->get($key);
+        } else {
+			$view = view('pages.advertise')->render();
+        	$this->cache->add($key, $view, env('APP_CACHE_MINUTES'));
+		}
+		return $view;
 	}
 
 	/**
@@ -51,7 +67,15 @@ class PageController extends Controller {
 	 */
 	public function privacy()
 	{
-		return view('pages.privacy');
+        $key = snake_case(class_basename($this) . '_' . __function__);
+
+        if ($this->cache->has($key)) {
+            $view = $this->cache->get($key);
+        } else {
+			$view = view('pages.privacy')->render();
+        	$this->cache->add($key, $view, env('APP_CACHE_MINUTES'));
+		}
+		return $view;
 	}
 
 	/**
@@ -61,7 +85,15 @@ class PageController extends Controller {
 	 */
 	public function terms()
 	{
-		return view('pages.terms');
+        $key = snake_case(class_basename($this) . '_' . __function__);
+
+        if ($this->cache->has($key)) {
+            $view = $this->cache->get($key);
+        } else {
+			$view = view('pages.terms')->render();
+        	$this->cache->add($key, $view, env('APP_CACHE_MINUTES'));
+		}
+		return $view;
 	}
 
 	/**
@@ -71,7 +103,14 @@ class PageController extends Controller {
 	 */
 	public function sitemap()
 	{
-		return view('pages.sitemap');
+        $key = snake_case(class_basename($this) . '_' . __function__);
 
+        if ($this->cache->has($key)) {
+            $view = $this->cache->get($key);
+        } else {
+			$view = view('pages.sitemap')->render();
+        	$this->cache->add($key, $view, env('APP_CACHE_MINUTES'));
+		}
+		return $view;
 	}
 }
