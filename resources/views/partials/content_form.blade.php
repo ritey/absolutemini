@@ -1,10 +1,10 @@
 <div class="form-group">
 
-	{!! Form::label('name', 'Name' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="name">Name</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('name', $content->name, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="name" id="name" class="form-control" value="{{ $content->name }}" />
 
 	</div>
 
@@ -12,11 +12,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('slug', 'Friendly URL' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="slug">Friendly URL</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('slug', $content->slug, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="slug" id="slug" class="form-control" value="{{ $content->slug }}" />
 
 	</div>
 
@@ -24,11 +24,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('page_title', 'SEO Title' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="page_title">SEO Title</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('page_title', $content->page_title, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="page_title" id="page_title" class="form-control" value="{{ $content->page_title }}" />
 
 	</div>
 
@@ -36,11 +36,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('meta_description', 'SEO description' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="meta_description">SEO description</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('meta_description', $content->meta_description, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ $content->meta_description }}" />
 
 	</div>
 
@@ -48,11 +48,19 @@
 
 <div class="form-group">
 
-	{!! Form::label('category_id', 'Category' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="category_id">Category</label>
 
 	<div class="col-md-9">
 
-		{!! Form::select('category_id', $categories, $content->category_id, [ 'class' => 'form-control' ]) !!}
+		<select name="category_id" name="category_id" class="form-control">
+
+			@foreach($categories as $category)
+
+				<option value="{{ $category }}" {{ ($content->category_id == $category) ? 'selected' : '' }} >{{ $category }}</option>
+
+			@endforeach
+
+		</select>
 
 	</div>
 
@@ -60,11 +68,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('summary', 'Summary' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="summary">Summary</label>
 
 	<div class="col-md-9">
 
-		{!! Form::textarea('summary', $content->summary, [ 'class' => 'form-control' ]) !!}
+		<textarea name="summary" id="summary" class="form-control">{{ $content->summary }}</textarea>
 
 	</div>
 
@@ -72,11 +80,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('content', 'Post' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="content">Post</label>
 
 	<div class="col-md-9">
 
-		{!! Form::textarea('content', stripslashes($content->content), [ 'class' => 'form-control' ]) !!}
+		<textarea name="content" id="content" class="form-control">{{ stripslashes($content->content) }}</textarea>
 
 	</div>
 
@@ -110,7 +118,7 @@
 
 	<div class="col-sm-5 col-xs-6">
 
-		{!! Form::submit($submitButtonText, [ 'class' => 'btn btn-primary form-control' ]) !!}
+		<input type="submit" value="{{ $submitButtonText" class="btn btn-primary form-control" />
 
 	</div>
 

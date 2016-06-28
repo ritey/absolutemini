@@ -1,10 +1,10 @@
 <div class="form-group">
 
-	{!! Form::label('name', 'Name' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="name">Name</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('name', $category->name, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}" />
 
 	</div>
 
@@ -12,11 +12,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('slug', 'Friendly URL' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="slug">Friendly URL</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('slug', $category->slug, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="slug" id="slug" class="form-control" value="{{ $category->slug }}" />
 
 	</div>
 
@@ -24,11 +24,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('page_title', 'SEO Title' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="page_title">SEO Title</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('page_title', $category->page_title, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="page_title" id="page_title" class="form-control" value="{{ $category->page_title }}" />
 
 	</div>
 
@@ -36,11 +36,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('meta_description', 'SEO description' , [ 'class' => 'col-sm-3 control-label' ] ) !!}
+	<label class="col-sm-3 control-label" for="meta_description">SEO description</label>
 
 	<div class="col-md-9">
 
-		{!! Form::text('meta_description', $category->meta_description, [ 'class' => 'form-control' ]) !!}
+		<input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ $category->meta_description }}" />
 
 	</div>
 
@@ -74,7 +74,7 @@
 
 	<div class="col-sm-5 col-xs-6">
 
-		{!! Form::submit($submitButtonText, [ 'class' => 'btn btn-primary form-control' ]) !!}
+		<input type="submit" value="{{ $submitButtonText }}" class="btn btn-primary form-control" />
 
 	</div>
 

@@ -24,13 +24,14 @@
 
 		<div class="col-sm-8">
 
-			{!! Form::open( [ 'method' => 'PUT' , 'route' => [ 'admin.content.update' , $content->id ] , 'class' => 'form-horizontal' ] ) !!}
+	        <form class="form-horizontal" role="form" method="PUT" action="{{ route('admin.content.update' , $content->id ) }}">
+	            {!! csrf_field() !!}
 
 				@include('partials.errors')
 
 				@include('partials.content_form', ['content' => $content, 'submitButtonText' => 'Save' , 'back_button' => route('admin.content.index') ] )
 
-			{!! Form::close() !!}
+			</form>
 
 		</div>
 
