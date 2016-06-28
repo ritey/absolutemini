@@ -156,7 +156,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\RepositoryServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
 
@@ -208,8 +207,6 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Form'      => Illuminate\Html\FormFacade::class,
-        'Html'      => Illuminate\Html\HtmlFacade::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
