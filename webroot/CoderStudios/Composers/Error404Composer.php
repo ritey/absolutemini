@@ -2,11 +2,11 @@
 
 namespace CoderStudios\Composers;
 
-use CoderStudios\Repositories\CategoryRepositoryInterface;
+use CoderStudios\Models\Categories;
 use Illuminate\Contracts\View\View;
 
-class Error404Composer {
-
+class Error404Composer
+{
     /*
     |--------------------------------------------------------------------------
     | 404 Composer Class
@@ -16,14 +16,14 @@ class Error404Composer {
     |
     */
 
-	public function __construct(CategoryRepositoryInterface $category)
-	{
-		$this->category = $category;
-	}
+    public function __construct(Categories $category)
+    {
+        $this->category = $category;
+    }
 
-	public function compose(View $view)
-	{
-		$categories = $this->category->where('enabled','1')->get();
-		$view->with('categories', $categories);
-	}
+    public function compose(View $view)
+    {
+        $categories = $this->category->where('enabled', '1')->get();
+        $view->with('categories', $categories);
+    }
 }

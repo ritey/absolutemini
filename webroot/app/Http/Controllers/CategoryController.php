@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App;
-use CoderStudios\Repositories\CategoryRepositoryInterface;
+use CoderStudios\Models\Categories;
 use CoderStudios\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
-    public function __construct(CategoryRepositoryInterface $category)
+    public function __construct(Categories $category)
     {
         $this->category = $category;
     }
@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, $id)
     {
-        $this->category->updateWithIdAndInput($id, $request->only(
+        $this->category->where('id', $id)->update($request->only(
             'enabled',
             'slug',
             'name',

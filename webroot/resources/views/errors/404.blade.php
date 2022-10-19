@@ -33,7 +33,7 @@
 
   						<div class="panel-body">
 
-  							<img src="images/absolutemini-32.png" alt="{{ $category->name }}"> <a href="{{ $category->slug }}" title="{{ $category->name }}">{{ $category->name }}</a>
+  							<img src="/images/absolutemini-32.png" alt="{{ $category->name }}"> <a href="{{ $category->slug }}" title="{{ $category->name }}">{{ $category->name }}</a>
 
   						</div>
 
