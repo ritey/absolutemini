@@ -25,6 +25,7 @@
 
 			<h2>Mini categories</h2>
 
+			@if (isset($categories))
 			@foreach($categories as $category)
 
 				<div class="col-sm-4">
@@ -42,6 +43,7 @@
 				</div>
 
 			@endforeach
+			@endif
 
 		</div>
 

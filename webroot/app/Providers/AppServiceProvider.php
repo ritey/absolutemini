@@ -9,9 +9,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register()
-    {
-    }
+    public function register() {}
 
     /**
      * Bootstrap any application services.
@@ -23,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
 
     private function setComposerHelpers()
     {
-        view()->composer('errors.404', 'CoderStudios\Composers\Error404Composer');
+        view()->composer('errors.404', '\CoderStudios\Composers\Error404Composer');
     }
 }
