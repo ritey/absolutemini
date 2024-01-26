@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/advertise', [PageController::class, 'advertise'])->name('advertise');
 Route::get('/sitemap.php', [PageController::class, 'sitemap'])->name('user.sitemap');
-Route::get('/sitemap.xml', [PageController::class, 'index'])->name('sitemap');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/codey', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
 Route::get('/codey/image', ['as' => 'admin.images.index', 'uses' => 'ImageController@index']);

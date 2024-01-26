@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use CoderStudios\Repositories\CategoryRepositoryInterface;
-use CoderStudios\Repositories\ContentRepositoryInterface;
+use CoderStudios\Models\Categories;
+use CoderStudios\Models\Contents;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -22,7 +22,7 @@ class SitemapController extends Controller
 
     private $article;
 
-    public function __construct(CategoryRepositoryInterface $category, ContentRepositoryInterface $article)
+    public function __construct(Categories $category, Contents $article)
     {
         $this->category = $category;
         $this->article = $article;
@@ -51,7 +51,7 @@ class SitemapController extends Controller
         $categories = $this->category->where('enabled', '1')->get();
         foreach ($categories as $category) {
             $sitemap->add(
-                Url::create(URL::to('/').'/'.$category->slug)
+                Url::create('/'.$category->slug)
                     ->setLastModificationDate(Carbon::parse($category->updated_at->toRfc2822String()))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                     ->setPriority(0.8)
@@ -65,7 +65,7 @@ class SitemapController extends Controller
             if (isset($category->slug)) {
                 $category_slug = $category->slug;
                 $sitemap->add(
-                    Url::create(URL::to('/').'/'.$category_slug.'/'.$article->slug)
+                    Url::create('/'.$category_slug.'/'.$article->slug)
                         ->setLastModificationDate(Carbon::parse($article->updated_at->toRfc2822String()))
                         ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                         ->setPriority(0.9)
@@ -73,8 +73,7 @@ class SitemapController extends Controller
             }
         }
 
-        $sitemap->render()
-        ;
+        $sitemap->render();
 
         return response($sitemap, 200, [
             'Content-Type' => 'application/xml',
